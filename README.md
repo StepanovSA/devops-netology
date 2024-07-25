@@ -22,4 +22,8 @@ First string
 
 ![alt text](https://github.com/StepanovSA/devops-netology/blob/main/git%204.PNG)
 
+# git log
+
+![alt text](https://github.com/StepanovSA/devops-netology/blob/main/git%205.PNG)
+
 * В файле .gitignore использовал параметры из документации, для terraform уже отдельно сделаю, когда дойдем
