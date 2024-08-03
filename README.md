@@ -70,12 +70,12 @@ override.tf.json
 Файл блокировки Terraform (`.terraform.lock.hcl`) обеспечивает детерминированность версий провайдеров. Этот файл может быть специфичным для локальной машины и не должен храниться в репозитории.
 
 # Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
+!example_override.tf
 
 Эта строка показывает, как можно включить конкретные файлы переопределения в систему контроля версий, используя отрицательный шаблон.
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
+example: *tfplan*
 
 Файлы плана (`tfplan`) содержат результаты выполнения команды `terraform plan` и не должны храниться в репозитории.
 
