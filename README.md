@@ -28,89 +28,16 @@ First string
 
 * В файле .gitignore использовал параметры из документации, для terraform уже отдельно сделаю, когда дойдем
 
-# Правила .gitignore
+# Ex.4
 
-1) Комментарии доступны через решётку(#) в начале строки
+**/.terraform/* - позволит игнорировать директории .terraform любой степени вложенности вместе с вложенными в них директориями и файлами.
 
-2) Символ "/" в начале строки указывает, что правило применяется только к файлам и папкам, которые располагаются в той же папке, что и сам файл .gitignore
+*.tfstate и *.tfstate.* - для исключения файлов состояния Terraform, которые имеют такое расширение.
 
-3) Доступно использовать спецсимволы: звёздочка(*) заменяет любое количество символов(ноль или больше)
+crash.log и crash.*.log - для игнорирования файлов журналов ошибок. Без данного правила репозиторий будет разрастаться с каждым коммитом.
 
-4) Знак вопроса ( ? ) соответствует любому одиночному символу
+*.tfvars и *.tfvars.json - для исключения файлов переменных. Как следует из комментария автора, они могут содержать конфиденциальную информацию.
 
-5) Два символа звездочки соответствуют любому файлу или нулю или более каталогам
+override.tf, override.tf.json, *_override.tf и *_override.tf.json - для исключения файлов переопределения ресурсов terraform.
 
-Если за ** следует косая черта /, соответствует только каталогам
-
-6) Восклицательный знак(!) в начале строки означает инвертирование правила, необходим для указания исключений из правил игнорирования
-
-7) Символ "\" используется для экранирования спецсимволов
-
-8) Для игнорирования всей директории, правило должно оканчиваться на слэш(/), в противном случае правило считается именем файла
-
-
-
-
-
-
-
-
-
-
-
-
-# Local .terraform directories
-**/.terraform/*
-
-Этот шаблон исключает все локальные директории `.terraform`, которые содержат временные файлы и кэшированные данные, используемые Terraform для хранения состояния и конфигураций.
-
-# .tfstate files
-*.tfstate
-*.tfstate.*
-
-Файлы состояния Terraform (`.tfstate`) содержат информацию о текущем состоянии инфраструктуры, управляемой Terraform. Эти файлы часто содержат чувствительные данные и не должны быть добавлены в систему контроля версий.
-
-# Crash log files
-crash.log
-crash.*.log
-
-Файл с логами ошибок (`crash.log`) генерируется в случае краха Terraform и не должен храниться в системе контроля версий.
-
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
-*.tfvars
-*.tfvars.json
-
-Файлы переменных (`.tfvars`) часто содержат чувствительные данные, такие как пароли и приватные ключи, и не должны быть добавлены в репозиторий.
-
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-Файлы переопределения используются для локальных изменений ресурсов и обычно не должны быть включены в систему контроля версий.
-
-# Ignore transient lock info files created by terraform apply
-.terraform.tfstate.lock.info
-
-Файл блокировки Terraform (`.terraform.lock.hcl`) обеспечивает детерминированность версий провайдеров. Этот файл может быть специфичным для локальной машины и не должен храниться в репозитории.
-
-# Include override files you do wish to add to version control using negated pattern
-!example_override.tf
-
-Эта строка показывает, как можно включить конкретные файлы переопределения в систему контроля версий, используя отрицательный шаблон.
-
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-example: *tfplan*
-
-Файлы плана (`tfplan`) содержат результаты выполнения команды `terraform plan` и не должны храниться в репозитории.
-
-# Ignore CLI configuration files
-.terraformrc
-terraform.rc
-
-Конфигурационные файлы Terraform CLI (`.terraformrc` и `terraform.rc`) могут содержать локальные настройки и не должны храниться в системе контроля версий.
+.terraformrc и terraform.rc - позволит игнорировать файлы конфигурации интерфейса командной строки.
