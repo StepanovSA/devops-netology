@@ -32,12 +32,11 @@ First string
 
 **/.terraform/* - позволит игнорировать директории .terraform любой степени вложенности вместе с вложенными в них директориями и файлами.
 
-*.tfstate и *.tfstate.* - для исключения файлов состояния Terraform, которые имеют такое расширение.
+!*.tfstate - не исключать файлы c расширением .tfstate
 
-crash.log и crash.*.log - для игнорирования файлов журналов ошибок. Без данного правила репозиторий будет разрастаться с каждым коммитом.
+crash.log и crash/**/*.log  - для игнорирования файлов с именем crash.log, также игнорировать все файлы, с расширением .log в дирректории crash/
 
-*.tfvars и *.tfvars.json - для исключения файлов переменных. Как следует из комментария автора, они могут содержать конфиденциальную информацию.
+*.tfvars и *.tfvars.json - для исключения файлов c расширением .tfvars и .tfvars.json
 
-override.tf, override.tf.json, *_override.tf и *_override.tf.json - для исключения файлов переопределения ресурсов terraform.
-
-.terraformrc и terraform.rc - позволит игнорировать файлы конфигурации интерфейса командной строки.
+override.tf, override.tf.json, *_override.tf и *_override.tf.json - для исключения файлов с именем override.tf, override.tf.json, а также файлы, заканчивающиеся на _override.tf и _override.tf.json
+.terraformrc и terraform.rc - позволит игнорировать файлы, которые заканчиваются на .terraformrc и любые файлы terraform.rc .
